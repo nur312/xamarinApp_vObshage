@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             IconImageSource="sun.png"
+             Title="My Checklists"
+             x:Class="appUI.pages.PersonalPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="My day"
+            IconImageSource="sun.png"
+            Order="Secondary"
+            Clicked="MyDay_Clicked"/>
+        <ToolbarItem 
+            Text="Important lists"
+            IconImageSource="star.png"
+            Order="Secondary" 
+            Clicked="ImportantLists_Clicked"/>
+        <ToolbarItem 
+            Text="All" 
+            IconImageSource="list.png" 
+            Order="Secondary" 
+            Clicked="All_Clicked"/>
+        <ToolbarItem 
+            Text="Help" 
+            x:Name="HelpTb" 
+            Order="Secondary"
+            Clicked="HelpTb_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout 
+            x:Name="Abs" 
+            BackgroundColor="WhiteSmoke">
+            <ListView 
+                x:Name="MainList" 
+                HeightRequest="{Binding Path=Height, Source={x:Reference Abs}}"
+                ItemTapped="MainList_ItemTapped" 
+                HasUnevenRows="True" 
+                HorizontalOptions="Fill" 
+                VerticalOptions="Fill" 
+                ItemSelected="MainList_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                    Text="Important"
+                                    Clicked="Important_Clicked"
+                                    Command="{Binding .}"/>
+                                <MenuItem 
+                                    Text="Edit" 
+                                    Clicked="Edit_Clicked"
+                                    CommandParameter="{Binding .}"/>
+                                <MenuItem 
+                                    Text="Delete"
+                                    Clicked="Delete_Clicked"
+                                    IsDestructive="True"
+                                    CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout 
+                                Orientation="Horizontal"
+                                Padding="10,0,10,0" 
+                                HeightRequest="50" 
+                                HorizontalOptions="Fill"
+                                BackgroundColor="White">
+                                <Image 
+                                    Source="list.png"
+                                    HeightRequest="24" 
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    Text="{Binding PageTitle, Mode=TwoWay}"
+                                    FontSize="Medium"
+                                    VerticalOptions="Center" 
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="{Binding Color}"/>
+                                <Image 
+                                    Source="star.png" 
+                                    HeightRequest="18" 
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="EndAndExpand"
+                                    Margin="10,0,10,0" 
+                                    IsVisible="{Binding IsImportant}" 
+                                    BackgroundColor="Transparent"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ImageButton 
+                Source="plusfab.png" 
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".92,.95,50,50" 
+                Clicked="PlusFab_Clicked" 
+                BackgroundColor="Transparent"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Collaborations"
+             x:Class="appUI.pages.GeneralPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Sign out"  
+            Order="Secondary" 
+            IsDestructive="True" 
+            Clicked="LogOut_Clicked"/>
+        <ToolbarItem 
+            Text="Help" 
+            x:Name="HelpTb" 
+            Order="Secondary" 
+            Clicked="HelpTb_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout 
+            x:Name="Abs" 
+            BackgroundColor="WhiteSmoke">
+            <ListView 
+                x:Name="MainList" 
+                HeightRequest="{Binding Path=Height, Source={x:Reference Abs}}"
+                HasUnevenRows="True" 
+                HorizontalOptions="Fill" 
+                VerticalOptions="Fill" 
+                ItemSelected="MainList_ItemSelected" 
+                ItemTapped="MainList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                    Text="Edit" 
+                                    x:Name="TeamEdit"  
+                                    CommandParameter="{Binding .}"
+                                    Clicked="TeamEdit_Clicked"/>
+                                <MenuItem 
+                                    Text="Copy Id" 
+                                    Clicked="CopyId_Clicked"  
+                                    CommandParameter="{Binding .}"/>
+                                <MenuItem 
+                                    Text="Delete" 
+                                    x:Name="TeamDelete"
+                                    CommandParameter="{Binding .}" 
+                                    Clicked="TeamDelete_Clicked"
+                                    IsDestructive="True"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                Padding="10,0,10,0" 
+                                HeightRequest="50" 
+                                HorizontalOptions="Fill" 
+                                BackgroundColor="White">
+                                <Image 
+                                    Source="colabr.png" 
+                                    HeightRequest="24" 
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    Text="{Binding Name, Mode=TwoWay}" 
+                                    FontSize="Medium"
+                                    VerticalOptions="Center" LineBreakMode="TailTruncation"
+                                    TextColor="DimGray"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ImageButton 
+                Source="plusfab.png" 
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".92,.95,50,50" 
+                BackgroundColor="Transparent" 
+                Clicked="PlusFab_Clicked"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

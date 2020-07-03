@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="appUI.pages.ModalTasks">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Importance" 
+            x:Name="StarTb" 
+            IconImageSource="{Binding StarIcon}"
+            Clicked="StarTb_Clicked"/>
+        <ToolbarItem 
+            Text="Remind" 
+            x:Name="RemaindTb" 
+            IconImageSource="{Binding RemindIcon}"
+            Clicked="RemaindTb_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout 
+                Grid.Row="0" 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="Center" 
+                Orientation="Horizontal" 
+                Padding="15,0,15,0">
+                <Label 
+                    FontSize="Medium" 
+                    VerticalOptions="Center" 
+                    HorizontalOptions="Start"
+                    Text="{Binding PageTitle}" 
+                    TextColor="DarkSlateGray" 
+                    LineBreakMode="TailTruncation"/>
+                <StackLayout 
+                    Orientation="Horizontal" 
+                    HorizontalOptions="EndAndExpand">
+                    <Image 
+                        Source="date.png" 
+                        HeightRequest="24"/>
+                    <DatePicker  
+                        x:Name="MyDatePicker" 
+                        Format="dd MMM " 
+                        Date="{Binding Date,Mode=TwoWay}" 
+                        FontSize="Micro"/>
+                    <Image 
+                        Source="clock.png" 
+                        HeightRequest="24"/>
+                    <TimePicker 
+                        x:Name="MyTimePicker" 
+                        Format="hh:mm tt" 
+                        Time="{Binding Time, Mode=TwoWay}"
+                        FontSize="Micro"/>
+                </StackLayout>
+            </StackLayout>
+            <AbsoluteLayout 
+                x:Name="Abs" 
+                Grid.Row="1" 
+                BackgroundColor="WhiteSmoke">
+                <ListView 
+                    x:Name="TasksList" 
+                    HasUnevenRows="True" 
+                    IsPullToRefreshEnabled="False"
+                    ItemsSource="{Binding ToDoList}" 
+                    ItemTapped="TasksList_ItemTapped" 
+                    HeightRequest="{Binding Path=Height, Source={Reference Abs}}" 
+                    ItemSelected="TasksList_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem 
+                                        Text="Edit" 
+                                        Clicked="Edit_Clicked" 
+                                        CommandParameter="{Binding .}"/>
+                                    <MenuItem 
+                                        Text="Copy" 
+                                        Clicked="CopyId_Clicked"  
+                                        CommandParameter="{Binding .}"/>
+                                    <MenuItem 
+                                        Text="Delete" 
+                                        Clicked="Delete_Clicked" 
+                                        IsDestructive="True"
+                                        CommandParameter="{Binding .}"/>
+                                </ViewCell.ContextActions>
+                                <StackLayout 
+                                    HeightRequest="50" 
+                                    Orientation="Horizontal" 
+                                    BackgroundColor="White"
+                                    HorizontalOptions="FillAndExpand" >
+                                    <Label 
+                                        TextColor="{Binding MyColor}" 
+                                        Text="{Binding TaskTitle}" 
+                                        HorizontalOptions="Start" 
+                                        FontSize="Medium"  
+                                        TextDecorations="{Binding MyTextDecorations}"
+                                        VerticalOptions="Center" 
+                                        Margin="15,0,15,0" 
+                                        LineBreakMode="TailTruncation"/>
+                                    <Image 
+                                        Source="tick.png" 
+                                        HeightRequest="18" 
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="EndAndExpand"
+                                        BackgroundColor="Transparent" 
+                                        Margin="10,0,10,0" 
+                                        IsVisible="{Binding IsDone}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <ImageButton 
+                    Source="plusfab.png" 
+                    BackgroundColor="Transparent" 
+                    Clicked="Fabplus_Clicked"
+                    AbsoluteLayout.LayoutFlags="PositionProportional" 
+                    AbsoluteLayout.LayoutBounds=".92,.92,50,50"/>
+            </AbsoluteLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Welcome!"
+             x:Class="appUI.pages.HelpPage">
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout HorizontalOptions="Center" Margin="30">
+                <Label Text="Personal checklists" FontSize="Large"/>
+                <Label >
+                    <Label.Text>
+                        Do you want to create a new checklist?
+
+Go to the Personal page. 
+Press plus button to add new checklist.
+Click on checklist cell.
+                    
+Is it important?
+Press the star
+                    
+Do you need a reminder?
+Choose date and time and press the bell
+                    
+Want to remove the cell?
+Press and hold cell and select DELETE
+                    
+Want to edit the cell?"
+Press and hold cell and select EDIT
+                    </Label.Text>
+                </Label>
+                <Label Text="Collabrations" FontSize="Large"/>
+                <Label>
+                    <Label.Text>
+                        Do you want to create a new team?
+
+Go to the Collaboration page. 
+Press plus button
+Select Create new team
+Press and hold your team
+Select Copy Id
+Send it to your friends
+
+Do you want to join the team?
+
+Copy Team Id
+Go to the Collaboration page. 
+Press plus button
+Select Join the team
+                    </Label.Text>
+                </Label>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

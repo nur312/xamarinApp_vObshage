@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="appUI.pages.TeamsPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            Text="Copy Id" 
+            x:Name="StarTb"
+            Clicked="CopyId_Clicked" 
+            Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <AbsoluteLayout 
+            x:Name="Abs" 
+            BackgroundColor="WhiteSmoke">
+            <ListView 
+                x:Name="MainList" 
+                HeightRequest="{Binding Path=Height, Source={x:Reference Abs}}"
+                HasUnevenRows="True" 
+                HorizontalOptions="Fill" 
+                VerticalOptions="Fill" 
+                ItemSelected="MainList_ItemSelected" 
+                ItemTapped="MainList_ItemTapped"
+                IsPullToRefreshEnabled="True" 
+                Refreshing="MainList_Refreshing">
+                <ListView.Header>
+                    <Label 
+                        x:Name="HeaderLabel" 
+                        Margin="20,5,20,10"
+                        TextColor="DarkSlateGray" 
+                        FontSize="Medium"/>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem 
+                                    Text="Edit"  
+                                    CommandParameter="{Binding .}"
+                                    x:Name="EditTeam" 
+                                    Clicked="EditCheckList_Clicked"/>
+                                <MenuItem 
+                                    Text="Delete"  
+                                    x:Name="DeleteTeam" 
+                                    Clicked="DeleteCheckList_Clicked"
+                                    CommandParameter="{Binding .}"/>
+                            </ViewCell.ContextActions>
+                            <StackLayout 
+                                Orientation="Horizontal" 
+                                Padding="10,0,10,0" 
+                                HeightRequest="50" 
+                                HorizontalOptions="Fill" 
+                                BackgroundColor="White">
+                                <Image 
+                                    Source="notepad.png" 
+                                    HeightRequest="24" 
+                                    VerticalOptions="Center"/>
+                                <Label 
+                                    Text="{Binding Title, Mode=TwoWay}" 
+                                    FontSize="Medium"
+                                    VerticalOptions="Center" 
+                                    LineBreakMode="TailTruncation"
+                                    TextColor="DimGray"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ImageButton 
+                Source="plusfab.png" 
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                AbsoluteLayout.LayoutBounds=".92,.95,50,50" 
+                BackgroundColor="Transparent" 
+                Clicked="PlusFab_Clicked"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

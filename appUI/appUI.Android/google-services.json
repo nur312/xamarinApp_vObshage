@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "615900819032",
+    "firebase_url": "https://vobshage-e86bd.firebaseio.com",
+    "project_id": "vobshage-e86bd",
+    "storage_bucket": "vobshage-e86bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:615900819032:android:44e186dbeb6686b455242d",
+        "android_client_info": {
+          "package_name": "com.companyname.appui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "615900819032-9f7romnmthojtvqm0ubnj2v54mbdrfde.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGPBtwHsbTwZxZfp-CmA-7wX3YUUA6jgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "615900819032-9f7romnmthojtvqm0ubnj2v54mbdrfde.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

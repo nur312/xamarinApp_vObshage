@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="appUI.pages.AuthPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Margin="40,20,40,20">
+            <StackLayout
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    Text="Welcome!"
+                    HorizontalOptions="Center"
+                    TextColor="Black"
+                    FontSize="35"
+                    Margin="0, 40"/>
+
+                <Entry
+                    Placeholder="E-mail"
+                    Keyboard="Email"
+                    x:Name="EmailInput"/>
+
+                <Entry
+                    Placeholder="Password"
+                    IsPassword="true"
+                    x:Name="PasswordInput"/>
+            </StackLayout>
+                <Button
+                    Text="Login"
+                    x:Name="LoginBtn"
+                    Clicked="LoginBtn_Clicked"
+                    HorizontalOptions="Center"
+                    BackgroundColor="#329DF7"
+                    TextColor="White"/>
+            
+                <Button
+                    Text="Create account"
+                    x:Name="NewAccountBtn"
+                    Clicked="NewAccountBtn_Clicked"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"
+                    TextColor="Black"
+                    FontSize="Micro"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
